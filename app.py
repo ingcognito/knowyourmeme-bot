@@ -18,8 +18,9 @@ class KnowYourMeme:
             if i == " ":
                 i = "+"
         search_url = "http://knowyourmeme.com/search?q=" + term  # making a url to be used
-        self.page = requests.get(search_url, headers=_HEADERS)  # requesting code
-        soup = BeautifulSoup(self.page.content, 'html.parser')  # parsing code with Beautiful Soup
+        page = requests.get(search_url, headers=_HEADERS)  # requesting code
+        soup = BeautifulSoup(page.content, 'html.parser')  # parsing code with Beautiful Soup
+
         list1 = soup.findAll("a", href=True)  # Finding all links of search
         url2 = "http://knowyourmeme.com" + list1[129]['href']  # Picking first result and using its href
         page2 = requests.get(url2, headers=_HEADERS)  # requesting page again
