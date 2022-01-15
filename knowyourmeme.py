@@ -24,14 +24,14 @@ class KnowYourMeme:
         list1 = soup.findAll("a", href=True)  # Finding all links of search
         url2 = "http://knowyourmeme.com" + list1[129]['href']  # Picking first result and using its href
         page2 = requests.get(url2, headers=_HEADERS)  # requesting page again
-        self.parse(page2.content)
+        return self.parse(page2.content)
 
 
 
     def random_image(self):
         url = "http://knowyourmeme.com/photos/random"
         page = requests.get(url, headers=_HEADERS)  # requesting code
-        self.parse(page.content)
+        return self.parse(page.content)
 
 
     def parse(self, content):
@@ -43,7 +43,7 @@ class KnowYourMeme:
         print(result)
         return result
 
-if __name__ == '__main__':
-    kym = KnowYourMeme() 
-    kym.search('asdf')
-    kym.random_image()
+#if __name__ == '__main__':
+#    kym = KnowYourMeme() 
+#    kym.search('asdf')
+#    kym.random_image()
