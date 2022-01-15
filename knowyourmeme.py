@@ -39,9 +39,9 @@ class KnowYourMeme:
         about = soup.find('meta', attrs={"property": "og:title"})['content']  # finding description
         imageurl = soup.find('meta', attrs={"property": "og:image"})['content']  # finding image url
         # siteurl = soup.find('meta', attrs={"property": "og:url"})['content']  # finding site url
-        print(f"{about} - {imageurl}")
-        #print(about['content'])
-        #return about['content']  # This is used for you to be able to print object and get definition print(nameofobject)
+        result = f"{about} - {imageurl}"
+        print(result)
+        return result
 
 if __name__ == '__main__':
     kym = KnowYourMeme() 
