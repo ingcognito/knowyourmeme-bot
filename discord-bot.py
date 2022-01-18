@@ -9,11 +9,13 @@ GUILD = os.getenv('DISCORD_GUILD')
 
 bot = commands.Bot(command_prefix='!')
 
+# get input working here? how do you parse
 @bot.command(name='knowyourmeme')
-async def search(ctx):
+async def search(ctx, arg):
     kym = KnowYourMeme() 
-    #response = kym.search('pepehands')
-    response = kym.random_image()
+    response = kym.search(arg)
+    #print('{} arguments: {}'.format(len(args), ', '.join(args)))
+    #response = kym.random_image()
     await ctx.send(response)
 
 bot.run(TOKEN)
