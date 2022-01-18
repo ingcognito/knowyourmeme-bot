@@ -17,15 +17,10 @@ class KnowYourMeme:
         for i in term:  # change every space to +
             if i == " ":
                 i = "+"
-        search_url = "http://knowyourmeme.com/search?q=" + term  # making a url to be used
+        search_url = "http://knowyourmeme.com/memes/" + term  # making a url to be used
         page = requests.get(search_url, headers=_HEADERS)  # requesting code
         soup = BeautifulSoup(page.content, 'html.parser')  # parsing code with Beautiful Soup
-
-        list1 = soup.findAll("a", href=True)  # Finding all links of search
-        url2 = "http://knowyourmeme.com" + list1[129]['href']  # Picking first result and using its href
-        page2 = requests.get(url2, headers=_HEADERS)  # requesting page again
-        return self.parse(page2.content)
-
+        return self.parse(page.content)
 
 
     def random_image(self):
@@ -36,14 +31,18 @@ class KnowYourMeme:
 
     def parse(self, content):
         soup = BeautifulSoup(content, 'html.parser')  # parsing it
-        about = soup.find('meta', attrs={"property": "og:title"})['content']  # finding description
-        imageurl = soup.find('meta', attrs={"property": "og:image"})['content']  # finding image url
-        # siteurl = soup.find('meta', attrs={"property": "og:url"})['content']  # finding site url
-        result = f"{about} - {imageurl}"
+        title = soup.find('meta', attrs={"property": "og:title"})['content']  # finding description
+        description = soup.find('meta', attrs={"name": "description"})['content']  # finding description
+        #siteurl = soup.find('meta', attrs={"property": "og:url"})['content']  # finding site url
+        image = soup.find('meta', attrs={"property": "og:image"})['content']  # finding image url
+
+        result = f"{title} - {description} - {image}"
         print(result)
         return result
 
 #if __name__ == '__main__':
 #    kym = KnowYourMeme() 
-#    kym.search('asdf')
-#    kym.random_image()
+#    kym.search('pepehands')
+#    #kym.random_image()
+
+
