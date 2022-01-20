@@ -37,7 +37,7 @@ class KnowYourMeme:
             #siteurl = soup.find('meta', attrs={"property": "og:url"})['content']  # finding site url
             image = soup.find('meta', attrs={"property": "og:image"})['content']  # finding image url
 
-            result = f"{title} \n {description} \n {image}"
+            result = f"{description} \n {image}"
             print(result)
             return result
         except:
