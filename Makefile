@@ -8,3 +8,5 @@ help:
 develop: ## Runs the discord-bot locally
 	python3 ./discord-bot.py
 
+runtime: ## Creates container from Dockerfile
+	docker build . -t knowyourmeme-bot:runtime
