@@ -30,15 +30,20 @@ class KnowYourMeme:
 
 
     def parse(self, content):
-        soup = BeautifulSoup(content, 'html.parser')  # parsing it
-        title = soup.find('meta', attrs={"property": "og:title"})['content']  # finding description
-        description = soup.find('meta', attrs={"name": "description"})['content']  # finding description
-        #siteurl = soup.find('meta', attrs={"property": "og:url"})['content']  # finding site url
-        image = soup.find('meta', attrs={"property": "og:image"})['content']  # finding image url
+        try:
+            soup = BeautifulSoup(content, 'html.parser')  # parsing it
+            title = soup.find('meta', attrs={"property": "og:title"})['content']  # finding description
+            description = soup.find('meta', attrs={"name": "description"})['content']  # finding description
+            #siteurl = soup.find('meta', attrs={"property": "og:url"})['content']  # finding site url
+            image = soup.find('meta', attrs={"property": "og:image"})['content']  # finding image url
 
-        result = f"{title} \n {description} \n {image}"
-        print(result)
-        return result
+            result = f"{title} \n {description} \n {image}"
+            print(result)
+            return result
+        except:
+            result = "No results found for your meme :sob:"
+            print(result)
+            return result
 
 #if __name__ == '__main__':
 #    kym = KnowYourMeme() 
