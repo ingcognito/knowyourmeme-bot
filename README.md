@@ -20,7 +20,8 @@ Install this bot into any discord channel and you can invoke its command using `
 
 ### Installing
 
-I loosely followed this tutorial to get the Discord bot up and running, I recommend you review this as well
+I loosely followed this tutorial to get the Discord bot up and running
+
 https://realpython.com/how-to-make-a-discord-bot-python/
 
 
@@ -28,22 +29,30 @@ https://realpython.com/how-to-make-a-discord-bot-python/
 Go here and copy the Discord Token
 
 Install all of the python dependencies using
-* pip3 install -r requirements.txt
+```
+pip3 install -r requirements.txt
+```
 
 ### Executing program
 
-I've created a Makefile to spin up the bot in one command. Once you have updated the .env with the correct credentials, you can utilize
+I've created a Makefile to spin up the bot in one command. 
+Once you have updated the .env with the correct credentials you can utilize
+
+```
+make
+```
+To display all of the possible commands
+
 
 ```
 make develop
 ```
+Will run it locally on your machine
 
-## Help
-
-Any advise for common problems or issues.
 ```
-command to run if program contains helper info
+make runtime
 ```
+Will compile it into a Docker container
 
 ## Acknowledgments
 
